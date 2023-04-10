@@ -1,4 +1,15 @@
 <link rel="stylesheet" href="/css/user_profile.css">
           
 
-<h1>Codeial / <%= title %> </h1>
+<h1>Codeial / Profile page </h1>
+
+<p>
+    Name: <%= user.name %>
+</p>
+<p>
+    Email: <%= user.email %>
+</p>
+
+<form action="/users/sign_out" method="post">
+<input type="submit" value="Sign Out">
+</form>
