@@ -1,6 +1,14 @@
 body {
-    background-color: yellow;
     margin:0;
     padding: 20px;
     text-align: center;
+}
+
+form{
+    display: grid;
+    justify-content: center;
+}
+
+input{
+    margin: 10px;
 }
