@@ -2,7 +2,8 @@ const User = require('../models/user');
 
 module.exports.profile = function(req,res){
     return res.render('user_profile',{
-        title: "User Profile"
+        title: "User Profile",
+        user: req.user
     });
 }
 
@@ -11,6 +12,9 @@ module.exports.profile = function(req,res){
 
 module.exports.signup = function(req,res)
 {
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile');
+    }
     return res.render('sign_up',{
         title: "Codeial | Sign Up"
     });
@@ -18,6 +22,9 @@ module.exports.signup = function(req,res)
 
 module.exports.signin = function(req,res)
 {
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile');
+    }
     return res.render('sign_in',{
         title: "Codeial | Sign In"
     });
@@ -52,5 +59,17 @@ module.exports.create = function(req,res){
 
 //get the sign in data and create session for user
 module.exports.createSession = function(req,res){
+    return res.redirect('/users/profile');
 
+};
+
+module.exports.destroySession = function(req,res,next){
+    //NOW REQ.LOGOUT IS A CALLBACK FUNCTION
+    req.logout(function(err){
+       if(err){
+        return next(err);
+       }
+       res.redirect('/users/sign_in');
+    });
+    // return res.redirect('/users/sign_in');
 };
