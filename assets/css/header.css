@@ -1,0 +1,17 @@
+header {
+  background-color: #3d3df1;
+  color: white;
+  margin: 0px;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline; }
+  header ul {
+    display: flex; }
+    header ul li {
+      display: contents; }
+      header ul li a {
+        color: white;
+        text-decoration: none;
+        margin-right: 10px; }

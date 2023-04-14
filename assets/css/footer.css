@@ -1,0 +1,17 @@
+footer {
+  background-color: #969696;
+  color: white;
+  margin: 0px;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between; }
+  footer ul {
+    display: grid; }
+    footer ul li {
+      display: contents; }
+      footer ul li a {
+        color: white;
+        text-decoration: none;
+        margin-bottom: 10px; }

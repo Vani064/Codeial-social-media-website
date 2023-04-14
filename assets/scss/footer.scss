@@ -1,0 +1,22 @@
+footer{
+    background-color: rgb(150, 150, 150);
+    color: white;
+    margin: 0px;
+    padding-left: 15px;
+    padding-right: 15px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    ul{
+        display: grid;
+        li{
+            display: contents;
+            
+            a{
+                color: white;
+                text-decoration: none;
+                margin-bottom: 10px;
+            }
+        }
+    }
+    }

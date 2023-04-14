@@ -1,14 +1,9 @@
 body {
-    margin:0;
-    padding: 20px;
-    text-align: center;
-}
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0px; }
 
-form{
-    display: grid;
-    justify-content: center;
-}
+form {
+  display: grid; }
 
-input{
-    margin: 10px;
-}
+input {
+  margin: 10px; }
