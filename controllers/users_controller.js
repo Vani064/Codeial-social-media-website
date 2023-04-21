@@ -27,7 +27,7 @@ module.exports.update = function(req,res){
 module.exports.signup = function(req,res)
 {
     if(req.isAuthenticated()){
-        return res.redirect('/');
+        return res.redirect('/users/profile');
     }
     return res.render('sign_up',{
         title: "Codeial | Sign Up"
@@ -37,7 +37,7 @@ module.exports.signup = function(req,res)
 module.exports.signin = function(req,res)
 {
     if(req.isAuthenticated()){
-        return res.redirect('/');
+        return res.redirect('/users/profile');
     }
     return res.render('sign_in',{
         title: "Codeial | Sign In"
@@ -73,17 +73,19 @@ module.exports.create = function(req,res){
 
 //get the sign in data and create session for user
 module.exports.createSession = function(req,res){
-    return res.redirect('/users/profile');
+    req.flash('success','Logged in successfully');
+    return res.redirect('/');
 
 };
 
 module.exports.destroySession = function(req,res,next){
     //NOW REQ.LOGOUT IS A CALLBACK FUNCTION
     req.logout(function(err){
+        req.flash('success','Logged out successfully');
        if(err){
         return next(err);
        }
-       res.redirect('/users/sign_in');
+       res.redirect('/');
     });
     // return res.redirect('/users/sign_in');
 };

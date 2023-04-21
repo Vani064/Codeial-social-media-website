@@ -4,18 +4,19 @@ const LocalStrategy = require('passport-local').Strategy;
 const session = require('express-session');
 passport.use(new LocalStrategy(
     {
-        usernameField: 'email'
-    },function(email, password, done){
+        usernameField: 'email',
+        passReqToCallback: true
+    },function(req, email, password, done){
         //find user and establish its identity
         User.findOne({email: email}).then(function(user){
             if(!user || user.password != password)
             {
-                console.log("Invalid User");
+               req.flash('error',"Invalid user");
                 return done(null,false);
             }
             return done(null, user);
         }).catch((err)=>{
-            console.log('Error');
+            req.flash('error',err);
             return done(err);
         });
     }
