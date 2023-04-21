@@ -1,7 +1,8 @@
 const Post = require('../models/post');
 const User = require('../models/user');
 
-module.exports.home = function(req,res){
+//using async for this
+module.exports.home = async function(req,res){
 
     //before ejs file
     // return res.end('<h1>Express is up!!</h1>');
@@ -19,25 +20,51 @@ module.exports.home = function(req,res){
 // });
 // };
 
-//populate user comments of each post
-Post.find({})
+//populate user comments of each post //promises using then and catch
+// Post.find({})
+// .populate('user')
+// .populate({
+//        path:'comments',
+//        populate: {
+//         path: 'user'
+//     }
+//     }).then((posts)=>{
+
+//         User.find({}).then((users)=>{
+//             return res.render('home',{
+//             title: "Home",
+//             posts: posts,
+//             all_users: users
+//         });
+    
+//     });
+// });
+// };
+
+//populate user comments of each post //promises using async await and using try and catch to handle error
+try{
+let posts = await Post.find({})
 .populate('user')
 .populate({
        path:'comments',
        populate: {
         path: 'user'
     }
-    }).then((posts)=>{
-
-        User.find({}).then((users)=>{
-            return res.render('home',{
-            title: "Home",
-            posts: posts,
-            all_users: users
-        });
-    
     });
-});
+    
+    let users = await User.find({});
+
+    return res.render('home',{
+        title: "Home",
+        posts: posts,
+        all_users: users
+    });
+}catch(err){
+    console.log('Error',err);
+    return;
+}
+    
+
 };
 
 //module.exports.actionName = function(req,res){}
