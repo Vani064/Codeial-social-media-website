@@ -1,2 +1,9 @@
 body {
   background-color: skyblue; }
+
+
+#head{
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
