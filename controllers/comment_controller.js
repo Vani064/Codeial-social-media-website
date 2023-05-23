@@ -2,6 +2,11 @@ const Comment = require("../models/comment");
 const Post = require("../models/post");
 const commentsMailer = require('../mailers/comments_mailers');
 
+
+
+const commentEmailWorker = require('../workers/comment_email_worker');
+const queue = require("../config/kue");
+
 module.exports.create = async function (req, res) {
   try{
   let post = await Post.findById(req.body.post);
@@ -17,7 +22,15 @@ module.exports.create = async function (req, res) {
 
           comment = await comment.populate('user', 'name email');
           commentsMailer.newComment(comment);
+           //we remove this as we are using delayed jobs - queue for this request
 
+          // let job = queue.create('emails',comment).save(function(err){
+          //    if(err){
+          //     console.log(' error in creating a queue', err);
+          //     return;
+          //    }
+          //    console.log('job enqueued',job.id);
+          // });
 
           if(req.xhr){
             //same like post created
