@@ -18,6 +18,8 @@ router.use('/comment',require('./comments'));
 
 router.use('/likes', require('./likes'));
 
+router.use('/friends', require('./friends'));
+
 router.use('/api', require('./api'));
 //for any further routes, access from here
 // router.use('/routername',require('./routerfile'));

@@ -9,7 +9,7 @@
 <% if(user.id == profile_user.id){%> 
     
     <!-- if user matches then show form  -->
-    <form action="/users/update/<%= profile_user.id %>" method="post" enctype="multipart/form-data">
+    <form action="/users/update/<%= profile_user._id %>" method="post" enctype="multipart/form-data">
       <input type="text" name="name" placeholder="Your name" value=" <%= profile_user.name %>" required>
       <input type="email" name="email" placeholder="Your email" value=" <%= profile_user.email %>" required>
       <input type="file" name="avatar" placeholder="Profile picture">
@@ -20,5 +20,32 @@
     <!-- else show only the profile info -->
     <h2>Name : <%= profile_user.name %></h2>
     <h2>Email : <%= profile_user.email %></h2>
+    <div class="btn-grp">
+      <% let isFriend = false %>
+      <% for(let friend of locals.populated_user.friendships){ %>
+       
+        <% if(friend.to_user == profile_user.id || friend.from_user == profile_user.id){ %>
+          <% isFriend = true %>
+        <% } %>
+      <% } %>
+
+      <% if(isFriend){%>
+        <button>
+          <a style="color:white;" class="toggle-friend-btn" href="/friends/add-friend/?id=<%= profile_user.id %>">
+            Remove Friend
+          </a>
+        </button>
+      <% }else{%>
+        <button>
+          <a style="color:white;" class="toggle-friend-btn" href="/friends/add-friend/?id=<%= profile_user.id %>">
+            Add Friend
+          </a>
+        </button>
+      <% } %>
+
+    </div>
 <% } %>
+
+<script src="js/toggle_friend.js"></script>
+
 

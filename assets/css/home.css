@@ -5,10 +5,14 @@
     width: 70%;
     padding: 10px;
     margin: 10px; }
-  #home-container #user-friends {
-    width: 15%;
-    margin: 10px;
+  #user-friends {
+    display: grid;
+    width: 20%;
+     }
+    #user, #friends{
+      margin: 10px;
     padding: 10px;
     text-align: center;
-    border: 1px solid #d7d6d6;
-    box-shadow: 10px 10px 30px 0px; }
+      border: 1px solid #d7d6d6;
+    box-shadow: 10px 10px 30px 0px;
+    }

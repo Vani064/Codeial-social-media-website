@@ -1,18 +1,40 @@
 const User = require('../models/user');
+const Friendship = require('../models/friendships');
 const fs = require('fs');
 const path = require('path');
 
-module.exports.profile = function(req,res){
-    User.findById(req.params.id).then((user)=>{
+module.exports.profile = async function(req,res){
+    try{
+      
+        let user = await User.findById(req.params.id);
+
+        let friendship1, friendship2;
+
+        friendship1 = await Friendship.findOne({
+            from_user: req.user,
+            to_user: req.params.id,
+        });
+        friendship2 = await Friendship.findOne({
+            from_user: req.params.id,
+            to_user: req.user,
+        });
+    
+    let populated_user = await User.findById(req.user).populate('friendships');
     return res.render('user_profile',{
         title: "User Profile",
-        profile_user: user
+        profile_user: user,
+        populated_user
+    
     });
-    });
+}catch(err){
+  console.log('error', err);
+  return;
 }
+};
 
 //controller syntax
 // module.exports.actionName = function(req,res){};
+
 
 module.exports.update = async function(req,res){
 
