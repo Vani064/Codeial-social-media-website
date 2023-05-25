@@ -50,8 +50,11 @@ let posts = await Post.find({})
        path:'comments',
        populate: {
         path: 'user'
-    }
-    });
+    },//for comments
+        populate: {
+            path: 'likes'
+        }
+    }).populate('likes');//for posts
     
     let users = await User.find({});
 
