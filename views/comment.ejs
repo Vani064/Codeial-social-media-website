@@ -10,7 +10,7 @@
        <small>
            <%= comment.user.name %>
       <!-- likes -->
-
+        </small><br><small>
         <% if(locals.user){ %> 
            
          <a class="toggle-like-button" data-likes="<%= comment.likes.length %>" href="/likes/toggle/?id=<%=comment._id%>&type=Comment">
