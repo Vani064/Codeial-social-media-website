@@ -11,6 +11,13 @@ module.exports.addFriend = async function(request , response){
         to_user : request.query.id,
     });
 
+    if(!existingFriendship){
+        existingFriendship = await Friendship.findOne({
+            from_user : request.query.id,
+            to_user : request.user,
+        });
+    }
+
     let toUser = await User.findById(request.user);
     let fromUser = await User.findById(request.query.id);
 

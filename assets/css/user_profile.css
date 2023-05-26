@@ -1,8 +1,7 @@
 body {
   background-color: skyblue; }
 
-  .btn-grp button{
-    background-color: black;
-    padding: 20px;
-    margin: 10px;
-  }
+.btn-grp button {
+  background-color: black;
+  padding: 20px;
+  margin: 10px; }
