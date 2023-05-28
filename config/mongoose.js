@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-
+const env = require('./environment');
 //connect to database
-mongoose.connect('mongodb://127.0.0.1:27017/codeial_dev');
+mongoose.connect(`mongodb://127.0.0.1:27017/${env.db}`);
 
 //acquire the connection to check if it is successful
 const db = mongoose.connection;
