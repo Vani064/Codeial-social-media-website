@@ -1,4 +1,5 @@
 const express = require('express');
+const process = require('process');
 const env = require('./config/environment');
 const cookieparser = require('cookie-parser');
 const app = express();
