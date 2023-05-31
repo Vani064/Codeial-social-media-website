@@ -1,2 +1,4 @@
 node_modules/
 jquery-3.6.4.js/
+public/
+production_logs/
