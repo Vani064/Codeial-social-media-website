@@ -8,6 +8,17 @@ body{
     margin: 10px;
   }
 
+  .user-container{
+    padding-top: 50px ;
+    padding-bottom: 50px ;
+    display: flex;
+    justify-content: space-around;
+  }
   #head{
+    width: 15%;
     margin: 10px;
+  }
+  .user-cont-con{
+    padding: 30px;
+    width: 60%;
   }

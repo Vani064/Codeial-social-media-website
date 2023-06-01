@@ -1,3 +1,4 @@
+
 <link rel="stylesheet" href='/css/home.css'>
 <link rel="stylesheet" href='/css/chat_box.css'>
 <!-- <link rel="stylesheet" href="<%= 
@@ -27,22 +28,20 @@ assetPath('css/chat_box.css') %>"> -->
     </div>
 </section>
 <section id="user-friends">
-  <section id="user">
-  <h4>Users</h4>
+    <div style=" right:0; ">
+  <h4 style="padding-top:30px;">Users</h4>
   <% for(u of all_users){ %> 
     <p>
-      <a href="/users/profile/<%= u.id %>"><%= u.name %></a>
+      <a style="padding: 5px;" href="/users/profile/<%= u.id %>"><%= u.name %></a>
     </p>
     <% } %>
-</section>
 <% if(locals.user){%> 
-<section id="friends">
-  <h4>Friends</h4>
+  <h4 style="padding-top:30px;">Friends</h4>
   <% if(locals.user.friendships.length == 0) {%>
-    <p>No friends found!</p>
+    <p  >No friends found!</p>
     <% }else{ %> <% for(friends of locals.user.friendships){ %> <%
     if(friends.from_user.id == locals.user.id) {%>
-    <div>
+    <div style="padding: 5px;">
       <a href="/users/profile/<%=friends.to_user._id%>">
         
         <p><%= friends.to_user.name %></p>
@@ -50,14 +49,13 @@ assetPath('css/chat_box.css') %>"> -->
     </div>
     <%}%>
     <% if(friends.to_user.id == locals.user.id) {%>
-      <div>
+      <div style="padding: 5px;">
         <a href="/users/profile/<%=friends.from_user._id%>">
           
           <p><%= friends.from_user.name %></p>
         </a>
       </div>
-      <% } %> <% } %> <% } %><% } %>
-</section>
+      <% } %> <% } %> <% } %><% } %></div>
 </section>
 <%- include('chat_box.ejs'); %>
 </div>

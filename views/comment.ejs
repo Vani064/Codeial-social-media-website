@@ -8,20 +8,25 @@
 <li id="comment-<%= comment._id %>">
     <p>
        <%= comment.content %>
-       <br>
-       <small><strong> Comment from </strong>
-           <%= comment.user.name %>
+       </p>
+       <div class="d-flex justify-content-between">
+        <div class="d-flex flex-row align-items-center">
+          <img class="rounded-circle" src="<%= comment.user.avatar %>" alt="avatar" width="34"
+            height="34" />
+       <small><p class="small mb-0 ms-2">
+           <%= comment.user.name %></p>
       <!-- likes -->
-        </small><br><small>
+        </small></div>
+        <div class="d-flex flex-row align-items-center">
+        <small class="small text-muted mb-0">
         <% if(locals.user){ %> 
            
          <a class="toggle-like-button" data-likes="<%= comment.likes.length %>" href="/likes/toggle/?id=<%=comment._id%>&type=Comment">
            <%= comment.likes.length %> 
-           Likes</a>
+           Likes </a>
          <%}else {%> 
            <%= comment.likes.length %> Likes
            <%} %>
-       </small>
-    </p>
+       </small></div></div>
    </li>
   </div></div>

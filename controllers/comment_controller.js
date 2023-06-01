@@ -21,7 +21,7 @@ module.exports.create = async function (req, res) {
           post.save();
 
 
-          comment = await comment.populate('user', 'name email');
+          comment = await comment.populate('user', 'name email avatar');
           commentsMailer.newComment(comment);
            //we remove this as we are using delayed jobs - queue for this request
 

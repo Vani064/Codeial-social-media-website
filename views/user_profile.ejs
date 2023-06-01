@@ -2,29 +2,32 @@
 <!-- <link rel="stylesheet" href="<%= 
 assetPath('css/user_profile.css') %>"> -->
 
-
+<div class="user-container">
 <% if(user.id == profile_user.id){%> 
   <div id="head">
-    <h1>Codeial / <%= user.name %></h1>
-  <img src="<%= user.avatar %>" alt="<%= user.name %>" width="200" height="200" >
+  <img class="rounded-circle" src="<%= user.avatar %>" alt="<%= user.name %>" width="200" height="200" >
   </div>
     <!-- if user matches then show form  -->
+    <div class="user-cont-con">
     <form action="/users/update/<%= profile_user._id %>" method="post" enctype="multipart/form-data">
-      <input type="text" name="name" placeholder="Your name" value=" <%= profile_user.name %>" required>
-      <input type="email" name="email" placeholder="Your email" value=" <%= profile_user.email %>" required>
-      <input type="file" name="avatar" placeholder="Profile picture">
-      <input type="submit" value="Update">
+      <label for="name">Name:</label>
+      <input class="form-control form-control-lg"  id="name" type="text" name="name" placeholder="Your name" value=" <%= profile_user.name %>" required>
+      <label for="email">Email:</label>
+      <input class="form-control form-control-lg"  id="email" type="email" name="email" placeholder="Your email" value=" <%= profile_user.email %>" required>
+      <label for="file">Upload Photo:</label>
+      <input id="file" class="form-control" type="file" name="avatar">
+      <input  class="btn btn-primary" type="submit" value="Update">
     </form>
-    
+    </div>
 <% }else{ %> 
     <!-- else show only the profile info -->
     <div id="head">
-      <h1>Codeial / <%= profile_user.name %></h1>
-    <img src="<%= profile_user.avatar %>" alt="<%= profile_user.name %>" width="100" height="100">
+    <img class="rounded-circle" src="<%= profile_user.avatar %>" alt="<%= profile_user.name %>" width="200" height="200">
     </div>
-    <h2>Name : <%= profile_user.name %></h2>
-    <h2>Email : <%= profile_user.email %></h2>
-    <div class="btn-grp">
+    <div class="text-center user-cont-con">
+    <h4><strong>Name : </strong> <%= profile_user.name %></h4>
+    <h4><strong>Email : </strong>  <%= profile_user.email %></h4>
+    <div class="text-center btn-grp">
       <% let isFriend = false %>
       <% for(let friend of locals.populated_user.friendships){ %>
        
@@ -34,22 +37,22 @@ assetPath('css/user_profile.css') %>"> -->
       <% } %>
 
       <% if(isFriend){%>
-        <button>
+        <button class="btn btn-primary">
           <a style="color:white;" class="toggle-friend-btn" href="/friends/add-friend/?id=<%= profile_user.id %>">
             Remove Friend
           </a>
         </button>
       <% }else{%>
-        <button>
+        <button class="btn btn-primary">
           <a style="color:white;" class="toggle-friend-btn" href="/friends/add-friend/?id=<%= profile_user.id %>">
             Add Friend
           </a>
         </button>
       <% } %>
-
+   </div>
     </div>
 <% } %>
-
+</div>
 <script src='/js/toggle_friend.js'></script>
 
 
