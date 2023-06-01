@@ -1,13 +1,15 @@
+<div class="card mb-4">
+  <% if (locals.user && (locals.user.id == post.user.id || locals.user.id == comment.user.id)){ %>
+    <small style="text-align: left;">
+        <a class="delete-comment-button" href="/comment/destroy/<%=comment.id %>"><i id="delbut" class="bi bi-x-square"></i></a>
+    </small>
+    <% } %>
+  <div class="card-body">        
 <li id="comment-<%= comment._id %>">
     <p>
-       <% if (locals.user && (locals.user.id == post.user.id || locals.user.id == comment.user.id)){ %>
-           <small>
-               <a class="delete-comment-button" href="/comment/destroy/<%=comment.id %>">X</a>
-           </small>
-           <% } %>
        <%= comment.content %>
        <br>
-       <small>
+       <small><strong> Comment from </strong>
            <%= comment.user.name %>
       <!-- likes -->
         </small><br><small>
@@ -22,3 +24,4 @@
        </small>
     </p>
    </li>
+  </div></div>

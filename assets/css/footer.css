@@ -1,7 +1,9 @@
 footer {
-  background-color: #969696;
+  background-color: #010149;
   color: white;
+  width: 100%;
   margin: 0px;
+  padding-top: 10px;
   padding-left: 15px;
   padding-right: 15px;
   display: flex;
@@ -10,6 +12,7 @@ footer {
   footer ul {
     display: grid; }
     footer ul li {
+      padding: 5px;
       display: contents; }
       footer ul li a {
         color: white;

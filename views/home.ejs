@@ -1,21 +1,23 @@
-<link rel="stylesheet" href="<%= 
+<link rel="stylesheet" href='/css/home.css'>
+<link rel="stylesheet" href='/css/chat_box.css'>
+<!-- <link rel="stylesheet" href="<%= 
 assetPath('css/home.css') %>">
 <link rel="stylesheet" href="<%= 
-assetPath('css/chat_box.css') %>">
+assetPath('css/chat_box.css') %>"> -->
 
-<h1>Codeial / <%= title %> </h1>
 <div id="home-container">
 <section id="feed-posts">
     <h4>Posts</h4>
     <% if(locals.user) {%>
     <form action="/posts/create" id ="new-post-form" method="post">  
-           <textarea name="content" cols="30" rows="3"  required> 
+           <textarea name="content" cols="30" rows="3"  required> Type here to post your thoughts..
     </textarea>
-    <input type="submit" value="Post">
+    <input class="btn btn-primary" type="submit" value="Post">
     <% } %>
     </form>
 
     <div id="posts-list-container">
+      <h4 class="mb-5 text-center"><strong>Latest posts</strong></h4>
         <ul>
         <% for(post of posts){ %> 
           <%- include('post') -%>  
@@ -59,11 +61,16 @@ assetPath('css/chat_box.css') %>">
 </section>
 <%- include('chat_box.ejs'); %>
 </div>
-<script src="<%= assetPath('js/home_post_comment.js') %>" ></script>
-<script src="<%= assetPath('js/home_posts.js') %>"></script>
+<script src='/js/home_post_comment.js' ></script>
+<script src='/js/home_posts.js'></script>
 
 <!-- likes toggle -->
-<script src="<%= assetPath('js/toggle_likes.js') %>"></script>
+<script src='/js/toggle_likes.js'></script>
+<!-- <script src="<%= assetPath('js/home_post_comment.js') %>" ></script>
+<script src="<%= assetPath('js/home_posts.js') %>"></script>
+
+ likes toggle 
+<script src="<%= assetPath('js/toggle_likes.js') %>"></script> -->
 <script>
   $('.toggle-like-button').each(function(){
     let self = this;
@@ -71,7 +78,8 @@ assetPath('css/chat_box.css') %>">
   });
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.js"></script>
-<script src="<%= assetPath('js/chat_engine.js') %>"></script>
+<!-- <script src="<%= assetPath('js/chat_engine.js') %>"></script> -->
+<script src='/js/chat_engine.js'></script>
 <% if(locals.user){ %> 
 <script >
  new ChatEngine('user-chat-box','<%= locals.user.email %>');

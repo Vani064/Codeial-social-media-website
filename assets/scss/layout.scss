@@ -1,6 +1,7 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0px;
+    min-height: 160vh
 }
 
 form{
@@ -9,4 +10,16 @@ form{
 
 input{
     margin: 10px;
+}
+
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+#signinup{
+  text-decoration: none;
+  color: white;
 }

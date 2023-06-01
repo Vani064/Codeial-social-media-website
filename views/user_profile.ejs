@@ -1,14 +1,13 @@
-<link rel="stylesheet" href="<%= 
-assetPath('css/user_profile.css') %>">
-          
-<div id="head">
-  <h1>Codeial / <%= user.name %></h1>
-<img src="<%= user.avatar %>" alt="<%= user.name %>" width="100" height="100">
-</div>
+<link rel="stylesheet" href="/css/user_profile.css">
+<!-- <link rel="stylesheet" href="<%= 
+assetPath('css/user_profile.css') %>"> -->
 
 
 <% if(user.id == profile_user.id){%> 
-    
+  <div id="head">
+    <h1>Codeial / <%= user.name %></h1>
+  <img src="<%= user.avatar %>" alt="<%= user.name %>" width="200" height="200" >
+  </div>
     <!-- if user matches then show form  -->
     <form action="/users/update/<%= profile_user._id %>" method="post" enctype="multipart/form-data">
       <input type="text" name="name" placeholder="Your name" value=" <%= profile_user.name %>" required>
@@ -19,6 +18,10 @@ assetPath('css/user_profile.css') %>">
     
 <% }else{ %> 
     <!-- else show only the profile info -->
+    <div id="head">
+      <h1>Codeial / <%= profile_user.name %></h1>
+    <img src="<%= profile_user.avatar %>" alt="<%= profile_user.name %>" width="100" height="100">
+    </div>
     <h2>Name : <%= profile_user.name %></h2>
     <h2>Email : <%= profile_user.email %></h2>
     <div class="btn-grp">
@@ -47,6 +50,6 @@ assetPath('css/user_profile.css') %>">
     </div>
 <% } %>
 
-<script src="<%= assetPath('js/toggle_friend.js') %>"></script>
+<script src='/js/toggle_friend.js'></script>
 
 

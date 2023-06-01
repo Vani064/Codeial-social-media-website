@@ -1,5 +1,6 @@
 <footer>
-            @Made with love by Vani Goel
+    <div>
+            @Made with love by Vani Goel</div>
             <ul>
               <li>
                 <a href="/">
@@ -8,14 +9,17 @@
               </li>
               <li>
                 <% if(locals.user){ %> 
+                 
                 <a href="/users/profile/<%= locals.user.id %>">
                   Profile
                 </a>
         <% }else{ %>
+          
           <a href="/users/sign_in %>">
             Profile
           </a>
        <% } %>
               </li>
             </ul>
+           
           </footer>

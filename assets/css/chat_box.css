@@ -39,7 +39,8 @@
     height: 24%;
     width: 100%;
     display: flex;
-    flex-direction: row; }
+    flex-direction: row;
+    align-items: baseline; }
     #user-chat-box #chat-message-input-container #chat-message-input {
       height: 50%;
       width: 70%; }
