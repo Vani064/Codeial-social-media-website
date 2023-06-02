@@ -12,7 +12,14 @@ It allows user to sign-in and sign-up (also Google sign-in/up )and make an accou
 ### Tools and Technologies
 - EJS, CSS, JavaScript, Bootstrap, AJAX, SCSS-: Front-End 
 - ExpressJS, NodeJS, Mongoose(MongoDB), Gulp -: Back-End
-- Middlewares --> Multer( *File Upload* ), Socket.io( *Chat Server* ), Passportjs( *Local authentication - Sign In/Up* ), PassportJWT( *Manual authentication - Sign In/Up* ), Passport-google( *authentication - Google Sign In/Up* ), flash-Noty( *Flash Notifications* ), Nodemailer and Kue ( *mails from website* ).
+- Middlewares
+	- Multer( *File Upload* )
+	- Socket.io( *Chat Server* )
+	- Passportjs( *Local authentication - Sign In/Up* )
+	- PassportJWT( *Manual authentication - Sign In/Up* )
+	- Passport-google( *authentication - Google Sign In/Up* )
+	- flash-Noty( *Flash Notifications* )
+	- Nodemailer and Kue ( *mails from website* ) 
 
 #### I hope you will like my project, feel free to drop any feedback.
 
