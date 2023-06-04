@@ -1,11 +1,8 @@
 const express = require('express');
 const process = require('process');
-const env = require('./config/environment');
-const logger = require('morgan');
 const cookieparser = require('cookie-parser');
 const app = express();
-require('./config/view-helpers')(app);
-const port = 8080;
+const port = 8000;
 const db = require('./config/mongoose');
  
 // used for session cookie
@@ -27,26 +24,24 @@ chatServer.listen(5000);
 console.log('chat server is listening on port 5000');
 const path = require('path');
 
-if(env.name == 'development'){
+
 app.use(sassMiddleware({
-   src: path.join(__dirname, env.asset_path, 'scss'),
-   dest: path.join(__dirname, env.asset_path, 'css') ,
+   src: './assets/scss',
+   dest: './assets/css' ,
    debug: true,
    outputStyle: 'extended',
    prefix: '/css'
 }));
-}
+
 
 app.use(express.urlencoded());
 app.use(cookieparser());
 
 const expressLayouts = require('express-ejs-layouts');
 
-app.use(express.static(env.asset_path));
+app.use(express.static('./assets'));
 //make the upload path available to the browser
 app.use('/uploads', express.static(__dirname + '/uploads'));
-
-app.use(logger(env.morgan.mode,env.morgan.options ));
 
 app.use(expressLayouts);
 //extract style and scripts from sub pages into the layout
@@ -61,7 +56,7 @@ app.set('views','./views');
 //mongo store is used to store the session cookie in the db
 app.use(session({
     name:'codeial',
-    secret: env.session_cookie_key,
+    secret: 'blah',
     saveUninitialized: false,
     resave: false,
     cookie:{
