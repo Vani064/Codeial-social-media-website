@@ -5,7 +5,7 @@ const logger = require('morgan');
 const cookieparser = require('cookie-parser');
 const app = express();
 require('./config/view-helpers')(app);
-const port = 8000;
+const port = 8080;
 const db = require('./config/mongoose');
  
 // used for session cookie
