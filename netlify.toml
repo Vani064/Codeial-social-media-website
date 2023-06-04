@@ -1,4 +1,0 @@
-[[redirects]]
-from = "/*"
-to = "/views/home.ejs"
-status = 200
